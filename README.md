@@ -2,6 +2,43 @@
 
 - 뽀모도로 타이머 : 25초 일하고 5초 쉬는 타이머
 
+- dependency
+# pubspec.yaml
+```DART
+dependencies:
+  flutter:
+    sdk: flutter
+  sprintf: "^6.0.0"
+  fluttertoast: "^8.0.7"
+```
+
+## 프로젝트 구성
+- main<br>
+  lib/main.dart
+```DART
+import 'package:flutter/material.dart';
+import 'package:flutter_timer_1/screens/timer_screen.dart';
+
+void main() => runApp(MyApp());
+
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: '뽀모도로 타이머',
+      home: TimerScreen(),
+    );
+  }
+}
+```
+
+- 화면<br>
+  lib/screens/timer_screen.dart<br>
+  
+
 - 타이머 : aync
 ```DART
 import dart:async;
@@ -31,35 +68,6 @@ String secondsToString(int seconds){
   return sprintf("%02d:%02d", [seconds ~/ 60, seconds % 60]);
 }
 ```
-
-- dependency
-# pubspec.yaml
-dependencies:
-  flutter:
-    sdk: flutter
-  sprintf: "^6.0.0"
-  fluttertoast: "^8.0.7"
-  
-## 프로젝트 구성
-- main<br>
-  lib/main.dart
-
-  [home 화면 지정]<br>
-  home: ListScreen()
-
-- 화면<br>
-  lib/screens/list_screen.dart<br>
-  lib/screens/detail_screen.dart<br>
-  
-  [화면이동]<br>
-  Navigator.of(context).push());<br>
-  
-  [화면 범위를 컨텐츠가 넘어설때 buffer overflow 에러 조치]<br>
-  width: MediaQuery.of(context).size.width * 0.8,<br>
-
-- 데이터<br>
-  lib/model/book.dart<br>
-  lib/repositories/book_repository.dart<br>
  
 ## 실행화면
-- [https://dabbyp.github.io/api_samples/flutter_book_list/build/web/index.html](https://dabbyp.github.io/api_samples/flutter_book_list/build/web/index.html)
+- [https://dabbyp.github.io/flutter_timer_1/build/web/index.html](https://dabbyp.github.io/flutter_timer_1/build/web/index.html)
