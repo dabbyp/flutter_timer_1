@@ -1,16 +1,65 @@
 # flutter_timer_1
 
-A new Flutter project.
+- 뽀모도로 타이머 : 25초 일하고 5초 쉬는 타이머
 
-## Getting Started
+- 타이머 : aync
+```DART
+import dart:async;
 
-This project is a starting point for a Flutter application.
+void runTimer() async {
+  Timer.periodic(Duration(seconds:1), (Timer t) {
+    setState((){
+      print("Timer is working");
+      _timer -= 1;
+    });
+  });  
+}
+```
 
-A few resources to get you started if this is your first Flutter project:
+- Container : BoxDecoration BoxShape.circle
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- enum Type : 
+ enum TimerStatus = { running, paused, stopped, resting }
+ 실행시점에 type이 fix 됨
+ int _timerStatus = TimerStatus.stopped;
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- sprintf
+```DART
+import 'package:sprintf/sprintf.dart';
+
+String secondsToString(int seconds){
+  return sprintf("%02d:%02d", [seconds ~/ 60, seconds % 60]);
+}
+```
+
+- dependency
+# pubspec.yaml
+dependencies:
+  flutter:
+    sdk: flutter
+  sprintf: "^6.0.0"
+  fluttertoast: "^8.0.7"
+  
+## 프로젝트 구성
+- main<br>
+  lib/main.dart
+
+  [home 화면 지정]<br>
+  home: ListScreen()
+
+- 화면<br>
+  lib/screens/list_screen.dart<br>
+  lib/screens/detail_screen.dart<br>
+  
+  [화면이동]<br>
+  Navigator.of(context).push());<br>
+  
+  [화면 범위를 컨텐츠가 넘어설때 buffer overflow 에러 조치]<br>
+  width: MediaQuery.of(context).size.width * 0.8,<br>
+
+- 데이터<br>
+  lib/model/book.dart<br>
+  lib/repositories/book_repository.dart<br>
+ 
+## 실행화면
+- [https://dabbyp.github.io/api_samples/flutter_book_list/build/web/index.html](https://dabbyp.github.io/api_samples/flutter_book_list/build/web/index.html)
