@@ -56,9 +56,11 @@ void runTimer() async {
 - Container : BoxDecoration BoxShape.circle
 
 - enum Type : 
+```DART
  enum TimerStatus = { running, paused, stopped, resting }
- 실행시점에 type이 fix 됨
+ // 실행시점에 type이 fix 됨
  int _timerStatus = TimerStatus.stopped;
+```
 
 - sprintf
 ```DART
