@@ -70,6 +70,23 @@ String secondsToString(int seconds){
   return sprintf("%02d:%02d", [seconds ~/ 60, seconds % 60]);
 }
 ```
- 
+
+- toast 메시지 알림창
+```DART
+import 'package:fluttertoast/fluttertoast.dart';
+
+void showToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_LONG,
+      gravity: ToastGravity.BOTTOM,
+      timeInSecForIosWeb: 5,
+      backgroundColor: Colors.grey,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+}
+```
+
 ## 실행화면
 - [https://dabbyp.github.io/flutter_timer_1/build/web/index.html](https://dabbyp.github.io/flutter_timer_1/build/web/index.html)
